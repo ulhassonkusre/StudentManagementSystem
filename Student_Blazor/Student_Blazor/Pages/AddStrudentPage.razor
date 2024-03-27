@@ -1,0 +1,143 @@
+﻿  @page "/AddStudent"
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+
+
+<link rel="stylesheet" href="/css/StudentForm.css" />
+<EditForm Model="@newStudent" OnValidSubmit="SubmitForm">
+    <DataAnnotationsValidator />
+
+    <div class="form-container">
+        <h1>
+            <h1>Add Student</h1>
+        </h1>
+        <br />
+
+
+        <div class="form-group">
+            <label for="firstName">First Name<span style="color: red;">*</span></label>
+            <InputText @bind-Value:event="@oninput" @bind-Value="newStudent.FirstName" maxlength="15" type="text" id="firstName" name="firstName" placeholder="Please enter FirstName" onkeydown="return /[a-zA-Z ]/i.test(event.key)"></InputText>
+
+        </div>
+        <ValidationMessage class="Error" For="@(()=> newStudent.FirstName)" style="color:red; top:145px"></ValidationMessage>
+
+        @* <label id="firstNameError" class="error-label" style="visibility:true"></label> *@
+        @* <label class="Error" style="color:red; font-size:small">This field is required</label> *@
+
+        <div class="form-group">
+            <label for="lastName">Last Name<span style="color: red;">*</span></label>
+            <InputText @bind-Value="newStudent.LastName" maxlength="18" type="text" id="lastName" name="lastName" placeholder="Please enter LastName" onkeydown="return /[a-zA-Z ]/i.test(event.key)"></InputText>
+
+        </div>
+        @* <label class="Error" style="color:red; font-size:small">This field is required</label> *@
+        <ValidationMessage class="Error" For="@(()=> newStudent.LastName)" style="top:197px"></ValidationMessage>
+
+        <div class="form-group">
+            <label for="gender">Gender<span style="color: red;">*</span></label>
+            <InputSelect @bind-Value="newStudent.Gender">
+
+                <option value="">Select the Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </InputSelect>
+        </div>
+
+        <div>  <ValidationMessage class="Error" For="@(()=> newStudent.Gender)" style="top:250px"></ValidationMessage></div>
+        @* <div>  <label class="Error" style="color:red; font-size:small">This field is required</label></div> *@
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth<span style="color: red;">*</span></label>
+            <InputDate min="@DateTime.Now.ToString("1924-1-1")" max="@DateTime.Now.ToString("2024-12-31")" @bind-Value="newStudent.DateOfBirth" id="dateOfBirth" class="dateOfBirth" @oninput="UpdateAge"></InputDate>
+            <label id="age1" for="age">Age<span style="color: red;">*</span></label>
+            @* <InputNumber @bind-Value="newStudent.Age" type="text" id="age"  name="age" @oninput="CalculateDateOfBirth"  ></InputNumber>  *@
+            <InputNumber min="0" max="99" @bind-Value="newStudent.Age" id="age" @oninput="UpdateDateOfBirth"></InputNumber>
+            <label style="margin-left: 5px;">years</label>
+
+            <ValidationMessage style="top:305px;margin-left:106px;" class="Error" For="@(()=> newStudent.DateOfBirth)"></ValidationMessage>
+        </div>
+
+
+        <ValidationMessage style="top:305px;margin-left:290px;" class="Error" For="@(()=> newStudent.Age)"></ValidationMessage>
+
+        <div class="form-group">
+            <label for="class">Class</label>
+            @* <InputText @bind-value="newStudent.Class" type="text" id="class" name="class" placeholder="Please enter class" style="margin-top:0px;" ></InputText> *@
+            <InputText size="2" @bind-Value="newStudent.Class" id="class" class="Class" placeholder="Please enter class" style="margin-top:0px;"></InputText>
+        </div>
+
+        <div class="form-group">
+            <label style="margin-top:20px" for="address" placeholder="Please enter address">Address</label>
+            <InputTextArea @bind-Value="newStudent.Address" style="resize:none" id="address" name="address" rows="3" placeholder="Enter Address here"></InputTextArea>
+
+        </div>
+
+        <div class="form-group">
+
+
+            <button class="Save" style="margin-left:300px;" type="submit">Save</button>
+            <button type="button" class="Cancel" @onclick="CancelEdit">Cancel</button>
+        </div>
+
+    </div>
+
+</EditForm>
+
+@code {
+
+    private EditContext editContext;
+    private StudentManagementSystem1.Models.Student newStudent;
+    protected override void OnInitialized()
+    {
+        newStudent = new StudentManagementSystem1.Models.Student();
+        editContext = new EditContext(newStudent);
+
+
+    }
+    
+    private void SubmitForm()
+    {
+        newStudent.FirstName = System.Text.RegularExpressions.Regex.Replace(newStudent.FirstName, @"\s+", " ");
+        newStudent.LastName = System.Text.RegularExpressions.Regex.Replace(newStudent.LastName, @"\s+", " ");
+        StudentManagementSystem1.Service.StudentService.AddStudent(newStudent);
+        NavigationManager.NavigateTo("/");
+
+
+    }
+
+    private void CancelEdit()
+    {
+
+        NavigationManager.NavigateTo("/");
+    }
+
+
+    private void UpdateAge(ChangeEventArgs e)
+    {
+        try
+        {
+            if (DateTime.TryParse(e.Value.ToString(), out var dateOfBirth))
+            {
+                newStudent.DateOfBirth = dateOfBirth;
+                newStudent.Age = DateTime.Now.Year - dateOfBirth.Year;
+            }
+        }
+        catch (Exception ex) { }
+
+    }
+
+    private void UpdateDateOfBirth(ChangeEventArgs e)
+    {
+        try
+        {
+            if (int.TryParse(e.Value.ToString(), out var age))
+            {
+                newStudent.Age = age;
+                newStudent.DateOfBirth = DateTime.Now.AddYears(-age);
+            }
+        }
+        catch (Exception ex) { }
+
+    }
+
+
+}

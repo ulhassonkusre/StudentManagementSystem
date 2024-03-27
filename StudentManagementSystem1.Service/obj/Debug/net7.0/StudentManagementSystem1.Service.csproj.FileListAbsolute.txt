@@ -1,0 +1,16 @@
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.csproj.AssemblyReference.cache
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.AssemblyInfoInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.AssemblyInfo.cs
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.csproj.CoreCompileInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\bin\Debug\net7.0\StudentManagementSystem1.Service.deps.json
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\bin\Debug\net7.0\StudentManagementSystem1.Service.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\bin\Debug\net7.0\StudentManagementSystem1.Service.pdb
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\bin\Debug\net7.0\StudentManagementSystem1.Models.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\bin\Debug\net7.0\StudentManagementSystem1.Models.pdb
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\refint\StudentManagementSystem1.Service.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.pdb
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\ref\StudentManagementSystem1.Service.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentM.BD2A71C8.Up2Date
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Service\obj\Debug\net7.0\StudentManagementSystem1.Service.sourcelink.json

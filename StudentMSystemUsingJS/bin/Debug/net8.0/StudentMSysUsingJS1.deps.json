@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "StudentMSysUsingJS1/1.0.0": {
+        "dependencies": {
+          "StudentManagementSystem1.Models": "1.0.0",
+          "StudentManagementSystem1.Service": "1.0.0"
+        },
+        "runtime": {
+          "StudentMSysUsingJS1.dll": {}
+        }
+      },
+      "StudentManagementSystem1.Models/1.0.0": {
+        "runtime": {
+          "StudentManagementSystem1.Models.dll": {}
+        }
+      },
+      "StudentManagementSystem1.Service/1.0.0": {
+        "dependencies": {
+          "StudentManagementSystem1.Models": "1.0.0"
+        },
+        "runtime": {
+          "StudentManagementSystem1.Service.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StudentMSysUsingJS1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentManagementSystem1.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentManagementSystem1.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

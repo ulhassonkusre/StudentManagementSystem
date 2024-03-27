@@ -1,0 +1,66 @@
+﻿@page
+@model StudentMSysUsingJS1.Pages.IndexModel 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Student</title>
+    <link rel="stylesheet" href="~/css/Index.css" />
+    <link rel="stylesheet" href="~/css/TableStyles.css" />
+</head>
+
+<body>
+
+   
+
+    <div id="container">
+    <h1>Our Students</h1>
+
+        <div id="searchandbutton ">
+            <input style=" margin-left:428px;" type="text" oninput="filterTable()" id="searchInput" placeholder="Search..." />
+            <button type="button" onclick="location.href='@Url.Page("AddEdit")'" style="background-color:steelblue">+Add</button>
+        </div>
+    <div>
+ 
+   
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th class="sortable" data-sort="FirstName">First Name</th>
+                <th class="sortable" data-sort="LastName">Last Name</th>
+                <th class="sortable" data-sort="Gender">Gender</th>
+                <th class="sortable" data-sort="Age">Age</th>
+                <th class="sortable" data-sort="Class">Class</th>
+            @*  <th class="sortable" data-sort="DateOfBirth">Date of Birth</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr data-student-id="@student.Id">
+
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>@student.Gender</td>
+                    <td>@student.Age</td>
+                    <td>@student.Class</td>
+                   @* <td>@student.DateOfBirth.ToShortDateString()</td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+  </div>
+   </div>
+
+    @section scripts {
+        @* <script src="~/js/sortAndSelect.js"></script>
+        <script src="~/js/search.js"></script> *@
+        <script src="/js/StudentDetails.js"></script>
+    }
+   
+</body>
+
+</html>

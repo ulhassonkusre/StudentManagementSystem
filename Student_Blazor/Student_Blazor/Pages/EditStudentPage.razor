@@ -1,0 +1,173 @@
+﻿@page "/EditStudent/{Id}"
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+
+<link rel="stylesheet" href="/css/StudentForm.css" />
+<EditForm OnValidSubmit="Save" EditContext="@editContext">
+    <DataAnnotationsValidator />
+
+    <div class="form-container">
+        <h1>
+            <h1>Edit Student</h1>
+        </h1>
+        <br />
+
+
+        <div class="form-group">
+            <label for="firstName">First Name<span style="color: red;">*</span></label>
+            <InputText @bind-Value="newStudent.FirstName" maxlength="15" type="text" id="firstName" name="firstName" placeholder="Please enter FirstName" onkeydown="return /[a-zA-Z ]/i.test(event.key)"></InputText>
+        </div>
+        <ValidationMessage class="Error" For="@(()=> newStudent.FirstName)" style="color:red; top:145px"></ValidationMessage>
+
+        <div class="form-group">
+            <label for="lastName">Last Name<span style="color: red;">*</span></label>
+            <InputText @bind-Value="newStudent.LastName" maxlength="18" type="text" id="lastName" name="lastName" placeholder="Please enter LastName" onkeydown="return /[a-zA-Z ]/i.test(event.key)"></InputText>
+
+        </div>
+
+        <ValidationMessage class="Error" For="@(()=> newStudent.LastName)" style="top:197px"></ValidationMessage>
+
+        <div class="form-group">
+            <label for="gender">Gender<span style="color: red;">*</span></label>
+            <InputSelect @bind-Value="newStudent.Gender">
+
+                <option value="">Select the Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </InputSelect>
+        </div>
+
+        <div>  <ValidationMessage class="Error" For="@(()=> newStudent.Gender)" style="top:250px"></ValidationMessage></div>
+
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth<span style="color: red;">*</span></label>
+            <InputDate min="@DateTime.Now.ToString("1924-1-1")" max="@DateTime.Now.ToString("2024-12-31")" @bind-Value="newStudent.DateOfBirth" id="dateOfBirth" class="dateOfBirth" @oninput="UpdateAge"></InputDate>
+            <label id="age1" for="age">Age<span style="color: red;">*</span></label>
+
+            <InputNumber min="0" max="99" @bind-Value="newStudent.Age" id="age" @oninput="UpdateDateOfBirth"></InputNumber>
+            <label style="margin-left: 5px;">years</label>
+
+            <ValidationMessage style="top:305px;" class="Error" For="@(()=> newStudent.DateOfBirth)"></ValidationMessage>
+        </div>
+
+
+        <ValidationMessage style="top:305px;margin-left:290px;" class="Error" For="@(()=> newStudent.Age)"></ValidationMessage>
+
+
+
+        <div class="form-group">
+            <label for="class">Class</label>
+
+            <InputText @bind-Value="newStudent.Class" id="class" class="Class" placeholder="Please enter class" style="margin-top:0px;"></InputText>
+        </div>
+
+        <div class="form-group">
+            <label style="margin-top:20px" for="address" placeholder="Please enter address">Address</label>
+            <InputTextArea @bind-Value="newStudent.Address" style="resize:none" id="address" name="address" rows="3" placeholder="Enter Address here"></InputTextArea>
+
+        </div>
+
+        <div class="form-group">
+
+
+            <button class="Delete" type="button" @onclick="DeleteStudent">Delete</button>
+            <button style="margin-left:212px" class="Save" type="submit" @onclick="()=> Save()">Save</button>
+            <button class="Cancel" type="button" @onclick="Cancel">Cancel</button>
+        </div>
+
+    </div>
+
+</EditForm>
+
+@code {
+
+    private StudentManagementSystem1.Models.Student originalStudent;
+    [Parameter]
+    public string Id { get; set; }
+    private EditContext editContext;
+    private StudentManagementSystem1.Models.Student newStudent;
+    private bool shouldSaveChanges = true;
+    protected override void OnParametersSet()
+    {
+        if (int.TryParse(Id, out int studentId))
+        {
+            originalStudent = StudentManagementSystem1.Service.StudentService.GetStudentById(studentId);
+            newStudent = new StudentManagementSystem1.Models.Student
+                {
+                    Id = originalStudent.Id,
+                    FirstName = originalStudent.FirstName.Trim(),
+                    LastName = originalStudent.LastName.Trim(),
+                    Gender = originalStudent.Gender,
+                    Age = originalStudent.Age,
+                    Class = originalStudent.Class,
+                    Address = originalStudent.Address,
+                    DateOfBirth = originalStudent.DateOfBirth
+                };
+            editContext = new(newStudent);
+            StateHasChanged();
+        }
+    }
+
+    private void Cancel()
+    {
+
+        shouldSaveChanges = false;
+        NavigationManager.NavigateTo("/");
+
+    }
+
+
+
+    private async Task DeleteStudent()
+    {
+        if (int.TryParse(Id, out int studentId))
+        {
+            var confirmed = await JSRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete this student record?");
+
+            if (confirmed)
+            {
+                StudentManagementSystem1.Service.StudentService.DeleteStudent(studentId);
+                NavigationManager.NavigateTo("/");
+            }
+
+        }
+    }
+    private async Task Save()
+    {
+       
+
+      
+      
+        Service.Student stu = new Service.Student();
+        int studentId = stu.Id;
+       
+      //   int Id = int.Parse(Service.StudentService.GetStudentById(stu.Id));
+        if (int.TryParse(Id, out int studentId1))
+        {
+            // Update the student directly from the service
+            StudentManagementSystem1.Service.StudentService.UpdateStudent(studentId1, newStudent);
+            NavigationManager.NavigateTo("/");
+        }
+    }
+
+    private void UpdateAge(ChangeEventArgs e)
+    {
+        if (DateTime.TryParse(e.Value.ToString(), out DateTime dateOfBirth))
+        {
+            newStudent.DateOfBirth = dateOfBirth;
+            newStudent.Age = DateTime.Now.Year - dateOfBirth.Year;
+        }
+    }
+
+    private void UpdateDateOfBirth(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int age))
+        {
+            newStudent.Age = age;
+            newStudent.DateOfBirth = DateTime.Now.AddYears(-age);
+        }
+    }
+}

@@ -1,0 +1,12 @@
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\bin\Debug\net7.0\StudentManagementSystem1.Models.deps.json
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\bin\Debug\net7.0\StudentManagementSystem1.Models.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\bin\Debug\net7.0\StudentManagementSystem1.Models.pdb
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.AssemblyInfoInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.AssemblyInfo.cs
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.csproj.CoreCompileInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\refint\StudentManagementSystem1.Models.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.pdb
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\ref\StudentManagementSystem1.Models.dll
+C:\Users\Ulhas Sonkusre\source\repos\AlphaMD\Project1\StudentManagementSystem1.Models\obj\Debug\net7.0\StudentManagementSystem1.Models.sourcelink.json

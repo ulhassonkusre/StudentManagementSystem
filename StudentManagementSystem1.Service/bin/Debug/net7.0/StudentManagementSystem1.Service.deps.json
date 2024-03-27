@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "StudentManagementSystem1.Service/1.0.0": {
+        "dependencies": {
+          "StudentManagementSystem1.Models": "1.0.0"
+        },
+        "runtime": {
+          "StudentManagementSystem1.Service.dll": {}
+        }
+      },
+      "StudentManagementSystem1.Models/1.0.0": {
+        "runtime": {
+          "StudentManagementSystem1.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "StudentManagementSystem1.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StudentManagementSystem1.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

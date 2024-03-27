@@ -1,0 +1,11 @@
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\bin\Debug\net7.0\Student_Model.deps.json
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\bin\Debug\net7.0\Student_Model.dll
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\bin\Debug\net7.0\Student_Model.pdb
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.AssemblyInfoInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.AssemblyInfo.cs
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.csproj.CoreCompileInputs.cache
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.dll
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\refint\Student_Model.dll
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\Student_Model.pdb
+C:\Users\Ulhas Sonkusre\source\repos\Blazor\Student_Maui_00\Student_Model\obj\Debug\net7.0\ref\Student_Model.dll

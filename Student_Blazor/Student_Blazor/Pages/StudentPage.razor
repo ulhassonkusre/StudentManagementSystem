@@ -1,0 +1,135 @@
+﻿
+@page "/"
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager
+
+
+<div id="container">
+    <h1>Our Students</h1>
+
+    <div id="searchandbutton ">
+        
+        <input id="searchInput" style="margin-left:537px;" type="text" @bind="searchText" @oninput="SearchTextChanged" placeholder=" Search..." />
+        <button type="button" @onclick="AddStudent" style="background-color:steelblue">+Add</button>
+       
+    </div>
+    <div>
+
+
+        <table id="studentTable">
+            <thead>.
+                <tr >
+                    <th @onclick="() => SortStudents(nameof(StudentManagementSystem1.Models.Student.FirstName))">First Name</th>
+                    <th @onclick="() => SortStudents(nameof(StudentManagementSystem1.Models.Student.LastName))">Last Name</th>
+                    <th @onclick="() => SortStudents(nameof(StudentManagementSystem1.Models.Student.Gender))">Gender</th>
+                    <th @onclick="() => SortStudents(nameof(StudentManagementSystem1.Models.Student.Age))"> Age</th>
+                    <th @onclick="() => SortStudents(nameof(StudentManagementSystem1.Models.Student.Class))">Class</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var (student, index) in students.Select((student, index) => (student, index)))
+                {
+                    <tr @ondblclick="() => EditStudent(student.Id)"
+                        class="@((highlightedRow == index) ? "highlighted-row" : "")"
+                        @onclick="() => SetHighlightedRow(index)"
+                        style="display: @(IsRowVisible(student) ? "table-row" : "none")">
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                        <td>@student.Gender</td>
+                        <td>@student.Age</td>
+                        <td>@student.Class</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<link rel="stylesheet" href="/css/Student.css" />
+<style>
+    .highlighted-row {
+        background-color: wheat;
+    }
+</style>
+
+
+@code {
+    private List<StudentManagementSystem1.Models.Student> students;
+    private List<StudentManagementSystem1.Models.Student> filteredStudents;
+
+    private int highlightedRow = 0;
+    private string searchText = "";
+    protected override void OnInitialized()
+    {
+      //  students = Service.StudentService.GetStudents();
+       students = StudentManagementSystem1.Service.StudentService.GetStudents();
+    }
+    private void AddStudent()
+    {
+
+        NavigationManager.NavigateTo("AddStudent");
+    }
+    private void EditStudent(int Id)
+    {
+        NavigationManager.NavigateTo($"EditStudent/{Id}");
+    }
+
+    private void SetHighlightedRow(int index)
+    {
+        highlightedRow = index;
+    }
+    private string currentSortField;
+    private object GetPropertyValue(object obj, string propertyName)
+    {
+        return obj.GetType().GetProperty(propertyName).GetValue(obj, null);
+    }
+    private void SortStudents(string field)
+    {
+        if (currentSortField == field)
+        {
+            students.Reverse();
+        }
+        else
+        {
+
+            students = students.OrderBy(student => GetPropertyValue(student, field)).ToList();
+            currentSortField = field;
+        }
+    }
+
+
+
+    private void SearchTextChanged(ChangeEventArgs e)
+    {
+        searchText = e.Value.ToString();
+        ApplySearch();
+    }
+
+    private void ApplySearch()
+    {
+        filteredStudents = students.ToList();
+
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            var searchTextLower = searchText.ToLowerInvariant();
+            filteredStudents = filteredStudents.Where(student =>
+                student.FirstName.ToLowerInvariant().Contains(searchTextLower) ||
+                student.LastName.ToLowerInvariant().Contains(searchTextLower) ||
+                student.Age.ToString().Contains(searchText)
+            ).ToList();
+        }
+
+        SortStudents(currentSortField);
+    }
+    private bool IsRowVisible(StudentManagementSystem1.Models.Student student)
+    {
+        if (string.IsNullOrWhiteSpace(searchText))
+        {
+            return true;
+        }
+
+        var searchTextLower = searchText.ToLowerInvariant();
+
+        return student.FirstName.ToLowerInvariant().Contains(searchTextLower) ||
+               student.LastName.ToLowerInvariant().Contains(searchTextLower) ||
+               student.Age.ToString().Contains(searchText);
+    }
+}

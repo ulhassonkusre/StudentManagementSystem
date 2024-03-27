@@ -1,0 +1,107 @@
+﻿
+
+body {
+   
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: 3px solid steelblue;  Add border properties 
+    width: 600px;  Set the width to 640px 
+    height: 590px;
+    margin: 0px auto;
+    margin-top: auto;
+    box-sizing: border-box;  Include the border in the width calculation 
+}
+
+#age1{
+    margin-left: 10px;
+}
+
+.form-group {
+    display: flex;
+    margin-left: -10px;
+    margin-bottom: 20px;
+}
+
+#firstName {
+    width: 350px;
+    margin-left: 22px;
+    border: 1.5px solid steelblue;
+    font-weight:500;
+}
+
+#lastName {
+    width: 350px;
+    margin-left: 22px;
+    border: 1.5px solid steelblue;
+}
+#gender {
+    width: 175px;
+    margin-left: 45px;
+    border: 1.5px solid steelblue;
+}
+#dateOfBirth {
+    width: 175px;
+    margin-left: 15px;
+    border: 1.5px solid steelblue;
+}
+#age {
+    width: 50px;
+    margin-left: 10px;
+    border: 1.5px solid steelblue;
+}
+
+#address {
+    width: 350px;
+    margin-left: 48px;
+    border: 1.5px solid steelblue;
+}
+
+#class {
+    width: 350px;
+    margin-left: 68px;
+    border: 1.5px solid steelblue;
+}
+.delete-button {
+    width: 20%;
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #D3D3D3;
+    color: red;
+    margin-left: px;
+    margin-top: 10px;
+}
+
+.submit-button {
+    width: 20%;
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007FFF;
+    color: black;
+    margin-left: 220px;
+    margin-top: 10px;
+}
+
+.cancel-button {
+    width: 20%;
+    padding: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #D3D3D3;
+    color: black;
+    margin-left: 50px;
+    margin-top:10px;
+}

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Project_2(HTML,CSS,JS)/1.0.0": {
+        "runtime": {
+          "Project_2(HTML,CSS,JS).dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Project_2(HTML,CSS,JS)/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
